@@ -1,12 +1,10 @@
-/**
- * Created by hansha on 6/5/18.
- */
 const connection = require('../connection');
 
 let movies = (callback) => {
 
-    return connection.query(`Select * from movies order by sortOrder ASC`)
+    return connection.query(`Select * from movies order by sortOrder ASC`, {type: connection.QueryTypes.SELECT})
         .then(function (results) {
+            ;
             return callback(null, results)
         });
 };

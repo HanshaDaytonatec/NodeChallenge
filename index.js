@@ -18,12 +18,9 @@ app.get('/getMovie/:id', (req, res, callback) => {
 
     getMovie(id, function (error, results) {
         if (error) return next(error);
-        console.log('success');
         return res.send(results);
     });
 });
 
-var callback=function(data){
-    return data;
-};
+
 app.listen(3000,() => console.log('Example app listening on port 3000!'));

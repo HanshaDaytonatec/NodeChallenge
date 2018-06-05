@@ -1,7 +1,3 @@
-/**
- * Created by hansha on 6/5/18.
- */
-
 const Sequelize = require('sequelize');
 
 const dbConnection = new Sequelize({
