@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+require('dotenv').config();
 
 const dbConnection = new Sequelize({
     host: process.env.MYSQL_SERVER,
