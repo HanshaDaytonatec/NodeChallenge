@@ -3,14 +3,12 @@
  */
 const connection = require('../connection');
 
-let movies = (callback) => {
+let movie = (id, callback) => {
 
-    return connection.query(`Select * from movies order by sortOrder ASC`)
+    return connection.query(`Select * from movies where id=${id}`)
         .then(function (results) {
             return callback(null, results)
         });
 };
 
-module.exports=movies;
-
-
+module.exports = movie;

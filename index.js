@@ -1,23 +1,24 @@
 const express = require('express');
-const getMovies=require('./public/get_all_movies');
+const getAllMovies = require('./public/get_all_movies');
+const getMovie = require('./public/get_movie')
 const app=express();
 
-const yargs=require('yargs');
 
+app.get('/getAllMovies', (req, res, callback) => {
 
-const argv=yargs.options({
-    id:{
-        demand:true,
-        describe:'movies id'
-    }
-})
-    .help()
-    .alias('help','h')
-    .argv;
-
-app.get('/getMovies',(req,res,callback)=>{
-    var results=getMovies(argv.id,function(error, results) {
+    getAllMovies(function (error, results) {
         if (error) return next(error);
+
+        return res.send(results);
+    });
+});
+
+app.get('/getMovie/:id', (req, res, callback) => {
+    var id = req.params.id;
+
+    getMovie(id, function (error, results) {
+        if (error) return next(error);
+        console.log('success');
         return res.send(results);
     });
 });
